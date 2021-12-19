@@ -1,0 +1,52 @@
+echo"1-about your os version,release number,kernal version\n 2-show all available shells\n 3-sho mouse settings\n 4-show computer CPU information like process type,speed etc\n 5-show memory information\n 6-show hard disk information like size of hard disk,cache memory,model etc\n 7-file system(mounted)\n 8-keyboard settings"
+echo "enter option"
+read option 
+case $option in 
+    1) echo"os version,release number,kernal version" 
+      if [-f /etc/os-release]
+      then 
+      echo "os:" 
+      cat /etc/os-release 
+      fi 
+      ;;
+    2)echo "the available shells" 
+      If [-f /etc/shells]
+      then 
+      cat /etc/shells 
+      fi 
+      ;;
+    3)echo "mouse settings"
+       xinput - list - props "logitech USB Optical Mouse"
+      ;;
+    4)echo "CPU information" 
+     if [-f /proc/cpuinfo]
+      then 
+      cat /proc/cpuinfo 
+      fi
+      ;;
+    5)echo "memory information" 
+      if [-f /proc/meminfo]
+      then 
+      cat /proc/meminfo 
+      fi 
+      ;;
+    6)echo "hard disk information"
+        echo "Driver" 
+        if  [-f /proc/driver/rtc]
+       then 
+        cat /proc/driver/rtc
+        else"file not found" 
+        fi
+        ;;
+   7)echo "file system" 
+      if [-f /proc/mounts]
+      then 
+      cat /proc/mounts 
+      fi 
+      ;;
+    8)echo "keybord settings"
+         xinput - list - props "Dell Dell Quiet key keyboard"
+          ;;  
+    *)echo "enter valid option"
+         ;;
+esac
